@@ -12,10 +12,20 @@ class vistaMapa extends StatefulWidget {
 
 class _vistaMapaState extends State<vistaMapa> {
   Set<Marker> _marcadores = {};
+  LatLng cordenada = LatLng(0,0);
 @override
 void initState() { 
   super.initState();
-  FirebaseFirestore.instance
+  
+}
+
+  
+  //CollectionReference markers = FirebaseFirestore.instance.collection('coordenadas');
+  void _onMapCreated(GoogleMapController mapController){
+    setState(() {
+
+      
+      FirebaseFirestore.instance
       .collection('coordenadas')
       .get()
       .then((QuerySnapshot querySnapshot) {
@@ -30,15 +40,6 @@ void initState() {
               print(doc["usuario"]);
           });
       });
-}
-
-  
-  //CollectionReference markers = FirebaseFirestore.instance.collection('coordenadas');
-  void _onMapCreated(GoogleMapController mapController){
-    setState(() {
-
-      
-
 
       // _marcadores.add(
       //   Marker(
@@ -60,11 +61,25 @@ void initState() {
               ),
               onMapCreated: _onMapCreated,
               markers: _marcadores,
-              onTap: _handleTap,
+              onLongPress: _handleTap,
             ),
-      floatingActionButton: FloatingActionButton( 
-        onPressed: (){},
-        child: Icon(Icons.add),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(right: 50.0,bottom: 20.0),
+        child: FloatingActionButton( 
+          
+          onPressed: (){
+            FirebaseFirestore.instance.collection("coordenadas").add(
+        {
+          "usuario": "prueba3",
+          "latitud": cordenada.latitude,
+          "longitud": cordenada.longitude
+        }
+      );
+
+
+          },
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
@@ -72,16 +87,22 @@ void initState() {
   
 
   void _handleTap(LatLng punto) {
-    setState(() {
-      _marcadores.add(Marker(
+    setState(() {   
+        _marcadores.remove(_marcadores.last);
+        _marcadores.add(Marker(
         markerId: MarkerId(punto.toString()),
         position: punto,
         infoWindow: InfoWindow(
           title: 'mi marcador'
         ),
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueMagenta)
-      ));
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue)
+        ));
+
+      cordenada = punto;
       print(punto.toString());
+      
+      
+      
     });
   }
 }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "192435828254",
+    "project_id": "exam-flutter-bff10",
+    "storage_bucket": "exam-flutter-bff10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192435828254:android:65bc86ddebd54d7617200f",
+        "android_client_info": {
+          "package_name": "com.example.examen_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192435828254-u0u5mdpmpnur9vkng8i6mqlsdrcieiam.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.examen_flutter",
+            "certificate_hash": "59f75bcab70aab36dd30662bca018fd25fecb6f0"
+          }
+        },
+        {
+          "client_id": "192435828254-dpe5rtpaj0vtes382l4l26ti1a1s2ip5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxAfp93QAqcMIHxaz01QATPYbu8eIw4Ws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192435828254-dpe5rtpaj0vtes382l4l26ti1a1s2ip5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
